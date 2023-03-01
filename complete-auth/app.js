@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require("express")
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const csrf = require('csrf')
 
 const cookieParser = require('cookie-parser')
 
@@ -23,8 +24,12 @@ app.get("/", (req, res) => {
     res.send("<h1> Welcome to express App</h1>")
 })
 
-
+app.post('/test-register', (req, res)=>{
+    res.status(200).send("We are doing well");
+})
 app.post("/register", async (req, res) => {
+    //cs
+    
     try {
         // collect info from user
         const { firstname, lastname, email, password } = req.body;
