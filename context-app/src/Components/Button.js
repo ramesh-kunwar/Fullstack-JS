@@ -1,9 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import {mycontext} from "../App"
+const Button = () => {
+  const data = useContext(mycontext)
 
-const Button = (props) => {
+  console.log(data.color);
   return (
     <div 
-    style={{backgroundColor:props.btnColor}}
+    style={{backgroundColor:data.color}}
     >Color Changer</div>
   )
 }

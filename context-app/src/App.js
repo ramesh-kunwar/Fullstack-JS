@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import  React,{ createContext, useState } from 'react';
 import './App.css';
 import HeroSection from './Components/HeroSection';
 import Navbar from './Components/Navbar';
+
+export const mycontext = React.createContext()
 
 function App() {
   const [name, setName] = useState("")
@@ -19,16 +21,20 @@ function App() {
     )
     console.log(color);
   }
+
+
   return (
-    <>
+   <mycontext.Provider value={{name, color}}>
+     <>
       <Navbar />
       <form action="">
         <input type="text" placeholder='Enter your name' value={name} onChange={myName} />
         <input type="text" placeholder='Enter your color' value={color} onChange={myColor} />
       </form>
-      <HeroSection username={name} btnColor={color} />
+      <HeroSection />
 
     </>
+   </mycontext.Provider>
   );
 }
 
