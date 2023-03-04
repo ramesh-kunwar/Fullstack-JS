@@ -1,6 +1,7 @@
 
 const app = require("./app")
-const PORT =  process.env.PORT
+// const PORT =  process.env.PORT
+const PORT =  4000
 
 
 
