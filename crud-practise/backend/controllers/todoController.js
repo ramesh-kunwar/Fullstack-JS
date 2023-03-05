@@ -33,7 +33,8 @@ exports.createTasks = async (req, res) => {
 exports.getTasks = async (req, res) =>{
     try {
         const {taskName} = req.body;
-        const todos = await TodoModel.find({taskName})
+        const todos = await TodoModel.find()
+        // res.status(200).send(todos)
         res.status(200).json({
             success: true,
             message: "Tasks found",
