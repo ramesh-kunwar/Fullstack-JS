@@ -1,8 +1,10 @@
 const express = require("express")
 const router = express.Router()
-const {home, getTasks} = require("../controllers/todoController")
+const {home, getTasks, createTasks, deleteTasks} = require("../controllers/todoController")
 router.get("/", home)
 
-router.post("/gettasks", getTasks)
+router.post("/createtasks", createTasks)
+router.get("/gettasks", getTasks)
+router.delete("/deletetasks/:id", deleteTasks)
 
 module.exports = router;
