@@ -58,3 +58,15 @@ exports.deleteTasks = async (req, res) =>{
         console.log(error)
     }
 }
+
+exports.editTasks = async (req, res) =>{
+ try {
+    const task = await TodoModel.findByIdAndUpdate(req.params.id, req.body) 
+    res.status(200).send({
+        success: true,
+        message: "User update successfully"
+    })
+ } catch (error) {
+    
+ }   
+}
