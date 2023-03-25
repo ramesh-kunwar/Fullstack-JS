@@ -6,31 +6,13 @@ const app = express()
 const connectToDB = require("./config/db")
 connectToDB()
 
-// middleware
-const middleware = (req, res, next) =>{
-    console.log("hello my middleware");
+const User = require("./model/userSchema")
 
-    next()
-}
+//middleware
+app.use(express.json())
 
-// app.use(middleware())
-// middleware()
+app.use(require("./router/auth"))
 
 
-app.get("/", (req, res)=>{
-    res.send("Welcome to express app");
-})
-app.get("/about", middleware, (req, res)=>{
-    res.send("Welcome to about app");
-})
-app.get("/contact", (req, res)=>{
-    res.send("Welcome to contact app");
-})
-app.get("/signin", (req, res)=>{
-    res.send("Welcome to signin app");
-})
-app.get("/signup", (req, res)=>{
-    res.send("Welcome to signup app");
-})
 
 app.listen(4000, ()=> console.log("App running"))
