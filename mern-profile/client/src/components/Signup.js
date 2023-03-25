@@ -34,12 +34,12 @@ const Signup = () => {
             },
             body: JSON.stringify({ name, email, phone, work, password, cpassword })
         })
-        const data = await res.json();
+        const data =  res.JSON();
         if (data.status === 422 || !data) {
             window.alert("Invalid Registration")
         } else {
             window.alert("Registration Successful")
-            navigate("/login")()
+            navigate("/login")
         }
     }
     return (
