@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 
 const User = require("../model/userSchema")
-
+const authenticate = require("../middleware/authenticate")
 router.get("/", (req, res) => {
     res.send("Hello world from server")
 })
@@ -31,6 +31,8 @@ router.post("/register", async (req, res) => {
 })
 
 router.post("/signin", async (req, res) => {
+    const { email, password } = req.body;
+
     try {
         const { email, password } = req.body;
         if (!email || !password) {
@@ -53,7 +55,8 @@ router.post("/signin", async (req, res) => {
 
                 res.status(400).json({ error: "Invalid credientials" })
             } else {
-                res.json({ message: "user signin successfully" })
+                console.log(userLogin , "hell");
+                res.json({ message: "user signin successfully", userLogin })
             }
         }
 
@@ -64,4 +67,16 @@ router.post("/signin", async (req, res) => {
 
     }
 })
+
+// about us route
+router.get("/about", authenticate , (req, res)=>{
+    // res.send("hello about")
+    res.send(req.rootUser)
+})
+// router.get("/about" , (req, res)=>{
+//     console.log("Hello abut");
+//     res.send("hello about")
+//     // res.send(req.rootUser)
+// })
+
 module.exports = router;

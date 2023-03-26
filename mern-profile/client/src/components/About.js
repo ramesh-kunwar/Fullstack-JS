@@ -1,9 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const About = () => {
+  const navigate = useNavigate()
+  const [userData, setUserData] = useState({})
+  const callAboutPage = async () => {
+    try {
+      const res = await fetch("/about", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include" 
+      })
+      const data = await res.json()
+      console.log(data, "data");
+      setUserData(data)
+      console.log(userData, "user Dat");
+
+      if(!res.status === 100) {
+        const error = new Error(res.error)
+        throw error;
+      }
+
+    } catch (error) {
+      console.log(error);
+      navigate("/signup")
+    }
+  }
+  useEffect(()=>{
+    callAboutPage()
+  })
+
   return (
     <div className="container mt-5">
-      <form action="">
+      <form method='GET'>
         <div className="row">
 
           <div className="col-md-4">
@@ -24,24 +56,24 @@ const About = () => {
                 <div id="about" className="tab-pane fade in active">
                   <h3>About</h3>
                   <div >
-                    <label className='fw-bold'>User Id</label>
-                    <p className="fw-light ">347394873294</p>
+                    <label htmlFor='' className='fw-bold'>User Id</label>
+                    <p className="fw-light ">{userData._id}</p>
                   </div>
                   <div >
-                    <label className='fw-bold'>Name</label>
-                    <p className="fw-light ">Ramesh Kunwar</p>
+                    <label htmlFor='' className='fw-bold'>Name</label>
+                    <p className="fw-light ">{userData.name}</p>
                   </div>
                   <div >
-                    <label className='fw-bold'>Email</label>
-                    <p className="fw-light ">rameshkunwar@gmail.com</p>
+                    <label htmlFor='' className='fw-bold'>Email</label>
+                    <p className="fw-light ">{userData.email}</p>
                   </div>
                   <div >
-                    <label className='fw-bold'>Phone</label>
-                    <p className="fw-light ">980345345</p>
+                    <label htmlFor='' className='fw-bold'>Phone</label>
+                    <p className="fw-light ">{userData.phone}</p>
                   </div>
                   <div >
-                    <label className='fw-bold'>Profession</label>
-                    <p className="fw-light ">Web Developer</p>
+                    <label htmlFor=''  className='fw-bold'>Profession</label>
+                    <p className="fw-light ">{userData.work}</p>
                   </div>
                 </div>
                 {/* about */}

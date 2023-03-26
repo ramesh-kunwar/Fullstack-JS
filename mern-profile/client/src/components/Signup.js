@@ -34,9 +34,9 @@ const Signup = () => {
             },
             body: JSON.stringify({ name, email, phone, work, password, cpassword })
         })
-        const data =  res.JSON();
+        const data =  res.json();
         if (data.status === 422 || !data) {
-            window.alert("Invalid Registration")
+            alert("Invalid Registration")
         } else {
             window.alert("Registration Successful")
             navigate("/login")

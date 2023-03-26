@@ -35,7 +35,7 @@ const Login = () => {
                 <form method="POST" className="register-form" id="register-form">
 
                     <div className="form-group mb-3">
-                        <label for="email" className="form-label">Email</label>
+                        <label htmlFor="email" className="form-label">Email</label>
                         <input
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -43,7 +43,7 @@ const Login = () => {
                     </div>
 
                     <div className="form-group mb-3">
-                        <label for="password" className="form-label">Password</label>
+                        <label htmlFor="password" className="form-label">Password</label>
                         <input
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
