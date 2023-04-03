@@ -11,7 +11,10 @@ const bootcampSchema = new mongoose.Schema({
     },
     contact: Number,
     duration: String,
-    createdAt: Date.now,
+    createdAt: {
+        type: Date,
+        createdAt: Date.now
+    }
 })
 
 module.exports = mongoose.model("Bootcamp", bootcampSchema)
