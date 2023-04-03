@@ -24,7 +24,9 @@ exports.createBootcamp = async (req, res) => {
 // get all bootcamps
 exports.displayBootcamps = async (req, res) => {
     try {
+
         const bootcamp = await Bootcamp.find()
+            .populate("courses")
         if (!bootcamp) {
             res.status(404).json({
                 error: "Bootcamp not found"
@@ -47,6 +49,7 @@ exports.displayBootcamps = async (req, res) => {
 exports.getBootcamp = async (req, res) => {
     try {
         const bootcamp = await Bootcamp.findById(req.params.bootcampId)
+
         if (!bootcamp) {
             return res.status(404).json({
                 success: false,
