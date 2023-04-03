@@ -13,7 +13,10 @@ const courseSchema = new mongoose.Schema({
         ref: 'Bootcamp',
 
     },
-    createdAt: Date.now,
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
 })
 
 module.exports = mongoose.model("Course", courseSchema)
