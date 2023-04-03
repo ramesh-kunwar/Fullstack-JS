@@ -43,6 +43,25 @@ exports.displayBootcamps = async (req, res) => {
     }
 }
 
+// get single bootcamp
+exports.getBootcamp = async (req, res) => {
+    try {
+        const bootcamp = await Bootcamp.findById(req.params.bootcampId)
+        if (!bootcamp) {
+            return res.status(404).json({
+                success: false,
+                message: "bootcamp not found"
+            })
+        }
+        return res.status(201).json({
+            success: true,
+            data: bootcamp
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 // update bootcamp
 exports.updateBootcamp = async (req, res) => {
 
