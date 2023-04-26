@@ -18,6 +18,15 @@ exports.isLoggedIn = BigPromise(async (req, res, next) => {
 
 })
 
+
+exports.isAdmin = (req, res, next) => {
+    if (req.user.role !== "admin") {
+        return next(new CustomError("You are not allowed for this resource", 403))
+
+    }
+    next()
+}
+
 // exports.customRole = (...roles) => {
 //     console.log(roles);
 //     return (req, res, next) => {

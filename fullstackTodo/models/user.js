@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
         // minlength: [6, "password should be atleast 6 character"],
         select: false, // when saving to db pw doesn't come.
     },
+    role: {
+        type: String,
+        default: "user",
+    }
 
 })
 

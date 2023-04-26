@@ -110,3 +110,46 @@ exports.getSingleUser = BigPromise(async (req, res, next) => {
     })
 
 })
+
+// updateSingleUser
+// only admin can update single user
+
+exports.updateSingleUser = BigPromise(async (req, res, next) => {
+
+    const { name, email, password } = req.body;
+
+    const id = await User.findById(req.params.id)
+
+    if (!id) {
+        return next(new CustomError("No user found", 400))
+
+    }
+
+    const user = await User.findByIdAndUpdate(
+        id, {
+        name,
+        email,
+        password
+    })
+
+    res.status(200).json({
+        status: true,
+        message: "User Updated",
+        user
+    })
+
+})
+
+
+exports.deleteSingleUser = BigPromise(async (req, res, next) => {
+
+    const user = await User.findByIdAndDelete(req.params.id)
+
+    res.status(200).json({
+        success: true,
+        message: "User deleted",
+        user
+    })
+
+
+})
