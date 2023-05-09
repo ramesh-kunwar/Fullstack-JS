@@ -14,8 +14,10 @@ const UserSearch = () => {
     if (text == "") {
       alert("Please enter something");
     } else {
-      // @todo search users
+
+// @todo
       setText("");
+      // console.log(text);
     }
   };
   return (
