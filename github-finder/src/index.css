@@ -12,7 +12,15 @@ code {
     monospace;
 } */
 
-
+*{
+  list-style: none;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+a{
+  text-decoration: none;
+}
 /* @tailwind base;
 @tailwind components;
 @tailwind utilities; */

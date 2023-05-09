@@ -1,19 +1,19 @@
-import React from 'react'
+import React from "react";
+import UserResults from "../users/UserResults";
+import UserSearch from "../users/UserSearch";
 
 const Home = () => {
   return (
     <div
       style={{ height: "90vh" }}
-      className="container  d-flex align-items-center text-center justify-content-center "
+      className="container "
     >
       <div>
-        <h1 className="display-1 fw-bold text-center">Welcome</h1>
-
-
-
+        <UserSearch />
+        <UserResults />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
