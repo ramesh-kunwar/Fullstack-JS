@@ -5,8 +5,8 @@ import UserItem from "./UserItem";
 import GithubContext from "../../context/github/GithubContext";
 
 const UserResults = () => {
-  const { users, loading, fetchUsers } = useContext(GithubContext);
-
+  const { users, loading } = useContext(GithubContext);
+  console.log(users);
   if (!loading) {
     return (
       <div className="row">
