@@ -1,9 +1,12 @@
 const express = require("express")
 require("dotenv").config()
+const {errorHandler} = require("./backend/middleware/errorMiddleware")
 const PORT = process.env.PORT || 8000;
 const userRoutes = require("./backend/routes/userRoutes")
 
 const app = express()
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
 
 app.get("/", (req, res) => {
@@ -14,6 +17,8 @@ app.get("/", (req, res) => {
 
 app.use("/api/users", userRoutes)
 
+
+app.use(errorHandler)
 
 
 
