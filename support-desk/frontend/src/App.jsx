@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Header from "./components/Header";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   return (
@@ -17,7 +19,20 @@ const App = () => {
             <Route path="/register" element={<Register />} />
           </Routes>
         </div>
+        {/* <ToastContainer>
+        </ToastContainer> */}
       </Router>
+      {/* <ToastContainer /> */}
+
+      <ToastContainer
+        // position="top-right"
+        autoClose={3000}
+        closeOnClick
+        pauseOnFocusLoss
+        pauseOnHover
+      />
+      {/* Same as */}
+      {/* <ToastContainer /> */}
     </>
   );
 };
