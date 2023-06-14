@@ -1,19 +1,17 @@
-import React from "react";
-import Home from "./pages/Home";
-import { Outlet } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import { Provider } from "react-redux";
-import store from "./store/store";
-
-const App = () => {
+import './App.css';
+import Account from './components/Account';
+import Bonus from './components/Bonus';
+function App() {
   return (
-    <>
-      <Provider store={store}>
-        <Navbar />
-        <Outlet />
-      </Provider>
-    </>
+    <div className="App">
+      <h4>App</h4>
+      <h3>Current Amount : </h3>
+      <h3>Total Bonus : </h3>
+
+      <Account></Account>
+      <Bonus></Bonus>
+    </div>
   );
-};
+}
 
 export default App;
